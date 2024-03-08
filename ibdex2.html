@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="child">
+        <h1>hello there</h1>
+    </div>
+    <script>
+        const newele=document.createElement("h2")
+        newele.innerHTML="general kenobi"
+        const root=document.getElementById("child");
+        root.appendChild(newele)
+    </script>
+</body>
+</html>

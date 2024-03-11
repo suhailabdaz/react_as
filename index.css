@@ -1,3 +1,56 @@
 #parent{
-    color: red
-};
+    color: red;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 8px;
+    align-items: center;
+    padding-left: 5px;
+
+}
+
+.list > ul{
+    display: flex;
+}
+
+.list >ul>li{
+    padding: 10px;
+    margin: 4px;
+    list-style: none;
+    font-size: 30px;
+}
+.logoimage{
+    margin:4px;
+    width: 25vh;
+    height:14vh
+}
+.search{
+    align-items: center;
+    width: 65vh;
+    height: 7vh;
+    border-radius: 25;
+    padding-left: 22px;
+}
+
+.rescard{
+    width: 32vh;
+    margin: 30px 30px 30px 30px;
+    padding-bottom: -1px;
+    z-index: 1;
+    position: relative;
+}
+
+.resimage{
+    width: 32vh;
+    z-index: -1;
+    height: 25vh;
+}
+
+.rescard:hover{
+    transition: 0.5s;
+    transform: scale(0.9);
+    cursor: pointer;
+}
+

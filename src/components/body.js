@@ -1,7 +1,7 @@
 import { Rescard } from "./resCard";
-import { resList } from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
+import axios from "axios";
 
 const body = {
   display: "flex",
@@ -10,11 +10,9 @@ const body = {
 
 const Body = () => {
   const [resListData, setresListData] = useState([]);
-  const [filtereddatas,setfiltereddata]= useState([])
-
+  const [filtereddatas,setfiltereddata]= useState([]);
+  const [loading, setLoading] = useState(false)
   const Search = () => {
-    console.log("rerendered");
-
     const [searchdata,setsearchdata]=useState([]);
     return (
     <div className="search">
@@ -37,28 +35,27 @@ const Body = () => {
 
   const fetchdata = async () => {
     try{
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&pagetype=DESKTOP_WEB_LISTING"
-    );
+      setLoading(true)
+    // const data = await fetch(
+    //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&pagetype=DESKTOP_WEB_LISTING"
+    // );
 
-    const json = await data.json();
-    const newlist =
-      json?.data?.cards[2].card.card.gridElements?.infoWithStyle.restaurants;
+    // const json = await data.json();
+    const json = await axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&pagetype=DESKTOP_WEB_LISTING")
+    // const newlist =
+    //   json.data.data.cards[2].card.card.gridElements?.infoWithStyle.restaurants;
+    const newlist = await json.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     setresListData(newlist);
     setfiltereddata(newlist);
+    setLoading(false)
     }
     catch(err){
       console.log(err);
     }
   };
-
-  
-
-
-  if(resListData.length==0){
+  if(loading){
     return <Shimmer/>
   }
-
   return (
     <div>
     <div className="body-top">
@@ -66,8 +63,9 @@ const Body = () => {
     <button className="sort-btn"
         type="button"
         onClick={() => {
+          console.log("res",resListData)
           let filteredlist = resListData.filter(
-            (res) => res.info.avgRating >= 4.5
+            (res) => res.info.avgRating > 4.6
           );
           setresListData(filteredlist);
         }}
@@ -77,9 +75,9 @@ const Body = () => {
       </div>
     <div className="body" style={body}>
       
-      {resListData &&
-        filtereddatas.map((restaurant) => (
-          <Rescard key={restaurant.info.id} resdata={restaurant} />
+      {
+        filtereddatas.map((restaurant, i) => (
+          <Rescard key={i} resdata={restaurant} />
         ))}
     </div>
     </div>

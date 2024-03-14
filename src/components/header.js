@@ -1,13 +1,9 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState,useEffect } from "react";
-import Search from "./search";
+import { Link } from "react-router-dom"; 
 
 const Login = ()=>{
   const [login,setlogin]=useState("login")
-  useEffect(()=>{
-    console.log("useeffct called");
-  },[])
-
   return <div>
     <button className="btn-login" onClick={()=>{
         login=="login" ? setlogin("logout") : setlogin("login")
@@ -31,10 +27,10 @@ export const Header = () => {
         </div>
         <div className="list">
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-            <li>Cart</li>
+          <li><Link to="/">Home</Link></li>           
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/Contact">Contact</Link></li> 
+            <li><Link to="/">Cart</Link></li>                                       
           </ul>
         </div>
         <Login/>

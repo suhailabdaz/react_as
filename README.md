@@ -41,4 +41,8 @@
 - React's core algorithm
 
 # useState and useEffect
-- 
+- Thesse are examples of hook which are prebuild functions that only can be used inside a component.
+
+# Types of routing
+- server side routing 
+- client side routing

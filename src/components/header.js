@@ -1,16 +1,25 @@
 import { LOGO_URL } from "../utils/constants";
+import { useState,useEffect } from "react";
+import Search from "./search";
 
+const Login = ()=>{
+  const [login,setlogin]=useState("login")
+  useEffect(()=>{
+    console.log("useeffct called");
+  },[])
 
-const imgstyle = {
-    border: "1px solid black",
-  };
-const Search = () => (
-    <div className="search" style={imgstyle}>
-      <h3>Search</h3>
-    </div>
-  );
+  return <div>
+    <button className="btn-login" onClick={()=>{
+        login=="login" ? setlogin("logout") : setlogin("login")
+    }
+    }>
+      {login}
+    </button>
+  </div>
+}
 
 export const Header = () => {
+
     return (
       <div className="header">
         <div className="logo">
@@ -20,7 +29,6 @@ export const Header = () => {
             alt="logo"
           />
         </div>
-        <Search />
         <div className="list">
           <ul>
             <li>Home</li>
@@ -29,6 +37,7 @@ export const Header = () => {
             <li>Cart</li>
           </ul>
         </div>
+        <Login/>
       </div>
     );
   };

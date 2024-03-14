@@ -26,13 +26,7 @@
     width: 25vh;
     height:14vh
 }
-.search{
-    align-items: center;
-    width: 65vh;
-    height: 7vh;
-    border-radius: 25;
-    padding-left: 22px;
-}
+
 
 .rescard{
     width: 32vh;
@@ -52,5 +46,46 @@
     transition: 0.5s;
     transform: scale(0.9);
     cursor: pointer;
+}
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card{
+    width: 32vh;
+    margin: 30px 30px 30px 30px;
+    padding-bottom: -1px;
+    z-index: 1;
+    position: relative;
+    background-color: rgb(93, 87, 87);
+    height: 32vh;
+}
+
+
+.sort-btn{
+    height: 7vh;
+    width:45vh
+}
+
+.search-bar{
+    align-items: center;
+    width: 65vh;
+    height: 7vh;
+    border-radius: 25px 0px 0px 25px ;
+    padding-left: 22px;
+}
+
+.search-button{
+    width: 13vh;
+    height: 7vh;
+    border-radius:0px 25px 25px 0px ;
+    cursor: pointer;
+}
+
+.body-top{
+    display: flex;
+    justify-content: space-between;
 }
 

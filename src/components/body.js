@@ -63,11 +63,10 @@ const Body = () => {
     <button className="sort-btn"
         type="button"
         onClick={() => {
-          console.log("res",resListData)
           let filteredlist = resListData.filter(
-            (res) => res.info.avgRating > 4.6
+            (res) => res.info.avgRating > 4.0
           );
-          setresListData(filteredlist);
+          setfiltereddata(filteredlist);
         }}
       >
         top rated restaurants

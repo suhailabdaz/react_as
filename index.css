@@ -89,3 +89,14 @@
     justify-content: space-between;
 }
 
+.userinfo-card{
+    width: 32vh;
+    margin: 30px 30px 30px 30px;
+    padding-bottom: -1px;
+    border: 1px solid black;
+}
+
+.user-elements{
+    padding-left: 3vh;
+}
+

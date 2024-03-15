@@ -7,13 +7,11 @@ class User extends React.Component{
         this.state={
             count:0,
         }
-        console.log(this.props.name+"constructor");
+        // console.log(this.props.name+"constructor");
     }
-    componentDidMount(){
-        console.log(this.props.name+" mounted");
-    }
+    
         render(){
-            console.log(this.props.name+"renderd");
+            // console.log(this.props.name+"renderd");
             const {name,place}=this.props
             const {count}=this.state
             return( 

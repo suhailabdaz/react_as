@@ -1,6 +1,7 @@
 import { Rescard } from "./resCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 import axios from "axios";
 
 const body = {
@@ -11,7 +12,9 @@ const body = {
 const Body = () => {
   const [resListData, setresListData] = useState([]);
   const [filtereddatas,setfiltereddata]= useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  let onlinestatus=useOnlineStatus()
+  
   const Search = () => {
     const [searchdata,setsearchdata]=useState([]);
     return (
@@ -36,14 +39,9 @@ const Body = () => {
   const fetchdata = async () => {
     try{
       setLoading(true)
-    // const data = await fetch(
-    //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&pagetype=DESKTOP_WEB_LISTING"
-    // );
 
-    // const json = await data.json();
     const json = await axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&pagetype=DESKTOP_WEB_LISTING")
-    // const newlist =
-    //   json.data.data.cards[2].card.card.gridElements?.infoWithStyle.restaurants;
+
     const newlist = await json.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     setresListData(newlist);
     setfiltereddata(newlist);
@@ -55,6 +53,13 @@ const Body = () => {
   };
   if(loading){
     return <Shimmer/>
+  }
+  if(!onlinestatus){
+    return(
+    <div>
+      <h1>Youre offline</h1>
+    </div>
+    )
   }
   return (
     <div>

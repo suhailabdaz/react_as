@@ -1,6 +1,7 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom"; 
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Login = ()=>{
   const [login,setlogin]=useState("login")
@@ -16,6 +17,10 @@ const Login = ()=>{
 
 export const Header = () => {
 
+  let onlinestatus=useOnlineStatus()
+
+
+
     return (
       <div className="header">
         <div className="logo">
@@ -27,6 +32,9 @@ export const Header = () => {
         </div>
         <div className="list">
           <ul>
+          <li>
+            onlinestatus:{onlinestatus ? "online" :"offline"}
+          </li>
           <li><Link to="/">Home</Link></li>           
             <li><Link to="/about">About</Link></li>
             <li><Link to="/Contact">Contact</Link></li> 

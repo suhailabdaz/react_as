@@ -5,8 +5,8 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Login = ()=>{
   const [login,setlogin]=useState("login")
-  return <div>
-    <button className="btn-login" onClick={()=>{
+  return <div className="align-bottom bg-green-600">
+    <button className=" w-5 h-5 m-5 px-5 mt-16 text-4xl  bg-green-600" onClick={()=>{
         login=="login" ? setlogin("logout") : setlogin("login")
     }
     }>
@@ -22,23 +22,23 @@ export const Header = () => {
 
 
     return (
-      <div className="header">
-        <div className="logo">
+      <div className="flex justify-between">
+        <div className="w-64 m-7 ">
           <img
             className="logoimage"
             src= {LOGO_URL}
             alt="logo"
           />
         </div>
-        <div className="list">
-          <ul>
-          <li>
-            onlinestatus:{onlinestatus ? "online" :"offline"}
+        <div className="mt-8" >
+          <ul className="flex align-bottom">
+          <li className="m-5 mt-16 px-5 text-4xl text-green-600">
+            {onlinestatus ? "online" :"offline"}
           </li>
-          <li><Link to="/">Home</Link></li>           
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/Contact">Contact</Link></li> 
-            <li><Link to="/">Cart</Link></li>                                       
+          <li className="m-5 mt-16 px-5 text-4xl"><Link to="/">Home</Link></li>           
+            <li className="m-5 px-5 mt-16 text-4xl"><Link to="/about">About</Link></li>
+            <li className="m-5 px-5 mt-16 text-4xl"><Link to="/Contact">Contact</Link></li> 
+            <li className="m-5 px-5 mt-16 text-4xl"><Link to="/">Cart</Link></li>                                       
           </ul>
         </div>
         <Login/>

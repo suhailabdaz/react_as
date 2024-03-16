@@ -3,11 +3,8 @@ import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import axios from "axios";
+import { resListApi } from "../utils/constants";
 
-const body = {
-  display: "flex",
-  flexWrap: "wrap",
-};
 
 const Body = () => {
   const [resListData, setresListData] = useState([]);
@@ -26,7 +23,7 @@ const Body = () => {
       {
         const filtereddata= resListData.filter((res)=>res.info.name.toLowerCase().includes(searchdata.toLowerCase()))
         setfiltereddata(filtereddata)
-       
+      
       }}>Search</button> 
           
     </div>)
@@ -40,7 +37,7 @@ const Body = () => {
     try{
       setLoading(true)
 
-    const json = await axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&pagetype=DESKTOP_WEB_LISTING")
+    const json = await axios.get(resListApi)
 
     const newlist = await json.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     setresListData(newlist);
@@ -63,7 +60,7 @@ const Body = () => {
   }
   return (
     <div>
-    <div className="body-top">
+    <div className="flex">
     <Search/>
     <button className="sort-btn"
         type="button"
@@ -77,7 +74,7 @@ const Body = () => {
         top rated restaurants
       </button>
       </div>
-    <div className="body" style={body}>
+    <div className="body">
       
       {
         filtereddatas.map((restaurant, i) => (

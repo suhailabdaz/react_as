@@ -5,8 +5,8 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Login = ()=>{
   const [login,setlogin]=useState("login")
-  return <div className="align-bottom bg-green-600">
-    <button className=" w-5 h-5 m-5 px-5 mt-16 text-4xl  bg-green-600" onClick={()=>{
+  return <div className="align-text-bottom">
+    <button className=" text-4xl  bg-green-600 h-14 px-14 m-20 mr-5 rounded-lg text-cyan-50" onClick={()=>{
         login=="login" ? setlogin("logout") : setlogin("login")
     }
     }>

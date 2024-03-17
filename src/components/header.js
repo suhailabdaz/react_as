@@ -6,7 +6,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Login = ()=>{
   const [login,setlogin]=useState("login")
   return <div className="align-text-bottom">
-    <button className=" text-4xl  bg-green-600 h-14 px-14 m-20 mr-5 rounded-lg text-cyan-50" onClick={()=>{
+    <button className=" text-4xl  bg-green-600 h-14 px-14 m-20 mr-4 rounded-lg text-cyan-50" onClick={()=>{
         login=="login" ? setlogin("logout") : setlogin("login")
     }
     }>
@@ -18,9 +18,6 @@ const Login = ()=>{
 export const Header = () => {
 
   let onlinestatus=useOnlineStatus()
-
-
-
     return (
       <div className="flex justify-between">
         <div className="w-64 m-7 ">

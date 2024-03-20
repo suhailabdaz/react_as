@@ -1,29 +1,30 @@
 import {  useState } from "react";
 import { useParams } from "react-router-dom";
-import Shimmer from "./shimmer"
+import Shimmer from "./shimmer";
 import useMenuData from "../utils/useMenuData";
+import {RestaurantCategory} from "./restaurantCategory";
 
 const Resinfo=()=>{
 let params = useParams();
 let { resid } = params;
-
 let menuData=useMenuData(resid)
 
 
 if (!menuData) return <Shimmer/>
-const {name,cuisines}=menuData.cards[2].card.card.info
-const {itemCards}=menuData.cards[5].groupedCard.cardGroupMap.REGULAR.cards[2].card.card
-console.log("items",itemCards)
+const {name,cuisines}=menuData.cards[0].card.card.info
+const {itemCards}=menuData.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card
+
+const categories=menuData.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter((c)=>c.card?.["card"]?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
 
     return (
-        <div>
-            <h1>{name}</h1>
-            <h2>{cuisines}</h2>
-            <ul>
-            {itemCards.map((item, index) => (
-                <li key={index}>{item.card.info.name}</li>
-            ))}
-        </ul>
+        <div className="text-center mb-20">
+            <h1 className="my-2 text-3xl font-bold">{name}</h1>
+            <h2 className="my-2 text-2xl">{cuisines.join(",")}</h2>
+            {
+                categories.map((category,index)=>(
+                    <RestaurantCategory key={index} data={category?.card?.card}/>
+                ))
+            }
         </div>
     )
 }

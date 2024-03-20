@@ -1,11 +1,11 @@
 import {IMAGE_URL} from "../utils/constants"
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 
 
 export const Rescard = (props) => {
-    const {resdata} = props;
-  
+      const {resdata} = props;
     const {id,name,areaName,cuisines,avgRating,cloudinaryImageId}=resdata?.info
     const {deliveryTime}=resdata?.info.sla
     return (
@@ -23,9 +23,20 @@ export const Rescard = (props) => {
           <span className="rating">{avgRating}</span> &nbsp;
           {deliveryTime}&nbsp; Minutes
         </h3>
-        <h3 className="truncate mx-2">{cuisines}</h3>
+        <h3 className="truncate mx-2">{cuisines.join(",")}</h3>
         <h3 className="mb-3">{areaName}</h3>
         </Link>
       </div>
     );
   };
+
+  export const Promoted=(Rescard)=>{
+    return(props)=>{
+        return (
+          <div>
+          <label className="absolute z-20 m-2 p-2 rounded-md text-white bg-green-700">OPEN</label>
+          <Rescard key={props.index} resdata={props.resdata}/>
+          </div>
+        )
+    }
+  }

@@ -1,4 +1,4 @@
-import { Rescard } from "./resCard";
+import { Rescard ,Promoted} from "./resCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -6,10 +6,13 @@ import axios from "axios";
 import { resListApi } from "../utils/constants";
 
 
+
 const Body = () => {
   const [resListData, setresListData] = useState([]);
   const [filtereddatas,setfiltereddata]= useState([]);
   const [loading, setLoading] = useState(false);
+  const PromotedCard=Promoted(Rescard)
+   
   let onlinestatus=useOnlineStatus()
   
   const Search = () => {
@@ -78,7 +81,14 @@ const Body = () => {
       
       {
         filtereddatas.map((restaurant, i) => (
-          <Rescard key={i} resdata={restaurant} />
+          
+            restaurant.info.isOpen ?
+            (
+              <PromotedCard key={i} index={i} resdata={restaurant} />
+
+            ):(
+              <Rescard key={i} resdata={restaurant} />
+            )
         ))}
     </div>
     </div>

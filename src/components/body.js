@@ -15,11 +15,11 @@ const Body = () => {
   const Search = () => {
     const [searchdata,setsearchdata]=useState([]);
     return (
-    <div className="search">
-      <input type="text" className="search-bar" placeholder="Search" value={searchdata} onChange={(e)=>{
+    <div className="items-center content-center" >
+      <input type="text" className=" p-3 my-6 h-12 w-96 border-solid border-2" placeholder="Search" value={searchdata} onChange={(e)=>{
         setsearchdata(e.target.value)
       }}></input>
-      <button type="button" className="search-button" onClick={()=>
+      <button type="button" className=" w-40 h-11 border-solid bg-slate-500" onClick={()=>
       {
         const filtereddata= resListData.filter((res)=>res.info.name.toLowerCase().includes(searchdata.toLowerCase()))
         setfiltereddata(filtereddata)
@@ -60,13 +60,13 @@ const Body = () => {
   }
   return (
     <div>
-    <div className="flex">
+    <div className="flex items-center justify-center">
     <Search/>
-    <button className="sort-btn"
+    <button className="bg-gray-800 text-center text-slate-50 w-60 h-11"
         type="button"
         onClick={() => {
           let filteredlist = resListData.filter(
-            (res) => res.info.avgRating > 4.0
+            (res) => res.info.avgRating > 4.5
           );
           setfiltereddata(filteredlist);
         }}
@@ -74,7 +74,7 @@ const Body = () => {
         top rated restaurants
       </button>
       </div>
-    <div className="body">
+    <div className="flex flex-wrap">
       
       {
         filtereddatas.map((restaurant, i) => (

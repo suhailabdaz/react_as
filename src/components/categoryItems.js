@@ -3,7 +3,6 @@ import { IMAGE_URL } from "../utils/constants";
 
 const CategoryItems=(props)=>{
      const items=props.items
-     console.log(items);
     return (
         <div>
             {

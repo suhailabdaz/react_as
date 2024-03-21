@@ -1,16 +1,20 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState,useEffect } from "react";
+import { useState,useEffect, useContext } from "react";
 import { Link } from "react-router-dom"; 
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
+
 
 const Login = ()=>{
   const [login,setlogin]=useState("login")
+
+  const {userName}=useContext(userContext)
   return <div className="align-text-bottom">
     <button className=" text-4xl  bg-green-600 h-14 px-14 m-20 mr-4 rounded-lg text-cyan-50" onClick={()=>{
         login=="login" ? setlogin("logout") : setlogin("login")
     }
     }>
-      {login}
+      {userName}
     </button>
   </div>
 }

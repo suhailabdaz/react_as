@@ -1,13 +1,11 @@
 import CategoryItems from "./categoryItems"
-import { IMAGE_URL } from "../utils/constants"
-import { useState } from "react"
 
 export const RestaurantCategory=(props)=>{
     const {title,itemCards}=props.data
-    const [show,setshow]=useState(false)
+    const {shouldshow,show}=props
     
     const handleClick=()=>{
-        setshow(!show)
+        shouldshow()
     }
     return(
         <div>

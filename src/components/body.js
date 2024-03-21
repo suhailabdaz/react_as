@@ -1,5 +1,6 @@
 import { Rescard ,Promoted} from "./resCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import userContext from "../utils/userContext";
 import Shimmer from "./shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import axios from "axios";
@@ -12,7 +13,8 @@ const Body = () => {
   const [filtereddatas,setfiltereddata]= useState([]);
   const [loading, setLoading] = useState(false);
   const PromotedCard=Promoted(Rescard)
-   
+  const {userName,setuserNameState}=useContext(userContext)
+  
   let onlinestatus=useOnlineStatus()
   
   const Search = () => {
@@ -28,6 +30,9 @@ const Body = () => {
         setfiltereddata(filtereddata)
       
       }}>Search</button> 
+      <input type="text" className=" p-3 my-6 h-12 w-96 border-solid border-2" placeholder="Search" value={userName} onChange={(e)=>{
+        setuserNameState(e.target.value)
+      }}></input>
           
     </div>)
 };

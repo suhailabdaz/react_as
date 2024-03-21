@@ -1,4 +1,4 @@
-import React,{lazy,Suspense} from "react";
+import React,{lazy,Suspense, useState} from "react";
 import ReactDOM from "react-dom/client";
 import {Header} from "./src/components/header"
 import Body from "./src/components/body";
@@ -7,14 +7,20 @@ import { createBrowserRouter, RouterProvider , Outlet } from "react-router-dom";
 import Contact from "./src/components/Contact";
 import Error from "./src/components/error";
 import Resinfo from "./src/components/resinfo";
+import userContext from "./src/utils/userContext";
 
 const About = lazy(()=>import("./src/components/About"))
 
 const App = () => {
+  const [userNameState,setuserNameState]=useState()
   return (
     <div className="main">
+    <userContext.Provider value={{userName:userNameState,setuserNameState}}>
       <Header />
+      
       <Outlet />
+      </userContext.Provider>
+    
     </div>
   );
 };

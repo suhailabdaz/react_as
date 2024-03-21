@@ -3,8 +3,11 @@ import { useParams } from "react-router-dom";
 import Shimmer from "./shimmer";
 import useMenuData from "../utils/useMenuData";
 import {RestaurantCategory} from "./restaurantCategory";
+import { useState } from "react";
 
 const Resinfo=()=>{
+    const [shouldshow,setshouldshow]=useState(null)
+
 let params = useParams();
 let { resid } = params;
 let menuData=useMenuData(resid)
@@ -22,7 +25,7 @@ const categories=menuData.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter
             <h2 className="my-2 text-2xl">{cuisines.join(",")}</h2>
             {
                 categories.map((category,index)=>(
-                    <RestaurantCategory key={index} data={category?.card?.card}/>
+                    <RestaurantCategory shouldshow={()=>setshouldshow(index)} show={index===shouldshow ? true:false} key={index} data={category?.card?.card}/>
                 ))
             }
         </div>

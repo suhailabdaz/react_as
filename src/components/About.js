@@ -1,5 +1,6 @@
 import User from "./userinfo"
 import { Component } from "react"
+import userContext from "../utils/userContext"
 
 
 class About extends Component{
@@ -11,6 +12,7 @@ class About extends Component{
             location:" "
         }
         }
+        
     }
 
     async componentDidMount(){
@@ -33,10 +35,14 @@ class About extends Component{
 
     }
     render(){
-        // console.log("parent rendered");\
         const {name,location}=this.state.userInfo
         return(
+            
         <div>
+        <userContext.Consumer>{
+                ({userName})=><h1>{userName}</h1>
+            }
+            </userContext.Consumer>
         <User name={name} place={location}/>
     </div>
         )

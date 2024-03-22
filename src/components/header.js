@@ -43,7 +43,7 @@ export const Header = () => {
           <li className="m-5 mt-16 px-5 text-4xl"><Link to="/">Home</Link></li>           
             <li className="m-5 px-5 mt-16 text-4xl"><Link to="/about">About</Link></li>
             <li className="m-5 px-5 mt-16 text-4xl"><Link to="/Contact">Contact</Link></li> 
-            <li className="m-5 px-5 mt-16 text-4xl"><Link to="/">Cart ({cartItems.length}) </Link></li>                                       
+            <li className="m-5 px-5 mt-16 text-4xl"><Link to="/cart">Cart ({cartItems.length}) </Link></li>                                       
           </ul>
         </div>
         <Login/>

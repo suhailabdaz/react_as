@@ -8,6 +8,7 @@ import Contact from "./src/components/Contact";
 import Error from "./src/components/error";
 import Resinfo from "./src/components/resinfo";
 import userContext from "./src/utils/userContext";
+import Cart from "./src/components/cart";
 import appStore from "./src/utils/appStore";
 import { Provider } from "react-redux";
 
@@ -49,6 +50,10 @@ const approuter=createBrowserRouter(
         {
           path:"/contact",
           element:<Contact/>
+        },
+        {
+          path:"/cart",
+          element:<Cart/>
         }
       ]
     },

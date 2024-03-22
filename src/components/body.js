@@ -1,5 +1,5 @@
 import { Rescard ,Promoted} from "./resCard";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext,useRef } from "react";
 import userContext from "../utils/userContext";
 import Shimmer from "./shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -18,6 +18,11 @@ const Body = () => {
   let onlinestatus=useOnlineStatus()
   
   const Search = () => {
+    const inputRef=useRef(null)
+
+    useEffect(()=>{
+      inputRef.current.focus()
+    })
     const [searchdata,setsearchdata]=useState([]);
     return (
     <div className="items-center content-center" >
@@ -30,7 +35,7 @@ const Body = () => {
         setfiltereddata(filtereddata)
       
       }}>Search</button> 
-      <input type="text" className=" p-3 my-6 h-12 w-96 border-solid border-2" placeholder="Search" value={userName} onChange={(e)=>{
+      <input type="text" className=" p-3 my-6 h-12 w-96 border-solid border-2" ref={inputRef} placeholder="Search" value={userName} onChange={(e)=>{
         setuserNameState(e.target.value)
       }}></input>
           

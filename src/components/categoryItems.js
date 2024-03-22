@@ -1,8 +1,14 @@
 import { IMAGE_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 
 const CategoryItems=(props)=>{
      const items=props.items
+     const dispatch=useDispatch()
+     const handleClick=(item)=>{
+            dispatch(addItem(item))
+     }
     return (
         <div>
             {
@@ -30,7 +36,7 @@ const CategoryItems=(props)=>{
                     </div>
                     <div className="w-3/12 p-2">
                     <div className="absolute">
-                        <button className=" px-5 mx-9 mt-20 bg-slate-50 text-green-700 rounded-md">
+                        <button className=" px-5 mx-9 mt-20 bg-slate-50 text-green-700 rounded-md" onClick={()=>handleClick(item)}>
                         Add +
                         </button>
                     </div>

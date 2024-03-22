@@ -8,6 +8,8 @@ import Contact from "./src/components/Contact";
 import Error from "./src/components/error";
 import Resinfo from "./src/components/resinfo";
 import userContext from "./src/utils/userContext";
+import appStore from "./src/utils/appStore";
+import { Provider } from "react-redux";
 
 const About = lazy(()=>import("./src/components/About"))
 
@@ -15,12 +17,12 @@ const App = () => {
   const [userNameState,setuserNameState]=useState()
   return (
     <div className="main">
+    <Provider store={appStore}>
     <userContext.Provider value={{userName:userNameState,setuserNameState}}>
-      <Header />
-      
+      <Header />     
       <Outlet />
       </userContext.Provider>
-    
+    </Provider>
     </div>
   );
 };

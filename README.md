@@ -55,3 +55,16 @@
 - slice(cart slice)
 - dispatch (action)
 - selector
+
+# Types of testing
+- unit testing
+- integration testing
+- end to end testing(e2e)
+
+# Setting up testing in our app
+- install react testing library
+- install jest
+- install babel dependencies
+- configure babel
+- configure parcel file to disable its babel
+- configure jest (npx jest --init)

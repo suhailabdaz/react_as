@@ -68,3 +68,6 @@
 - configure babel
 - configure parcel file to disable its babel
 - configure jest (npx jest --init)
+- install @babel/preset-react to include jsx inside the test case
+- configure the babel config to include the  @babel/preset-react
+- install @testing-library/jest-dom

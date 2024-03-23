@@ -26,7 +26,7 @@ const Body = () => {
     const [searchdata,setsearchdata]=useState([]);
     return (
     <div className="items-center content-center" >
-      <input type="text" className=" p-3 my-6 h-12 w-96 border-solid border-2" placeholder="Search" value={searchdata} onChange={(e)=>{
+      <input  type="text" className=" p-3 my-6 h-12 w-96 border-solid border-2" placeholder="search" value={searchdata} onChange={(e)=>{
         setsearchdata(e.target.value)
       }}></input>
       <button type="button" className=" w-40 h-11 border-solid bg-slate-500" onClick={()=>

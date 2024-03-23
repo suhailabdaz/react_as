@@ -6,10 +6,11 @@ import { useEffect } from "react";
 
 export const Rescard = (props) => {
       const {resdata} = props;
+      console.log("props",props);
     const {id,name,areaName,cuisines,avgRating,cloudinaryImageId}=resdata?.info
     const {deliveryTime}=resdata?.info.sla
     return (
-      <div className="w-80  mx-7 my-3 border-solid border-2 rounded-lg text-center hover:bg-slate-300 hover:scale-95 hover:ease-in-out duration-500">
+      <div data-testid="resCard" className="w-80  mx-7 my-3 border-solid border-2 rounded-lg text-center hover:bg-slate-300 hover:scale-95 hover:ease-in-out duration-500">
       <Link to={"/resinfo/" + id}>
         <img
           className="resimage"

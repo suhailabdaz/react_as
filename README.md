@@ -71,3 +71,6 @@
 - install @babel/preset-react to include jsx inside the test case
 - configure the babel config to include the  @babel/preset-react
 - install @testing-library/jest-dom
+
+
+and more.....
